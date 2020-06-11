@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :products, only: %i[index show]
+  resources :products, only: %i[index show new create]
+  get 'bulma_layouts', to: 'bulma#bulma_layouts'
 end
