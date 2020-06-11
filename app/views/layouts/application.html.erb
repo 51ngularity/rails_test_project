@@ -1,15 +1,67 @@
+<%
+=begin%>
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ProduktVergleich</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>ProduktVergleich</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <%= yield %>
+</body>
+
+</html>
+<%
+=end%>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produktvergleich</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+  <section class="hero is-info is-primary is-bold my-4 mx-4">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          header with color gradient and margin 4
+        </h1>
+        <h1 class="subtitle">
+          subtitle
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="content">
+      <%= yield %>
+    </div>
+  </section>
+
+  <footer class="footer has-background-grey-light my-4 mx-4">
+    <div class="content has-text-centered">
+      <p>
+        <div class="title">I am a footer with a light gray background and a margin</div>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+
+</body>
+
 </html>
