@@ -1,0 +1,302 @@
+<body>
+  <div class="container has-background-danger">
+    <h3>class container, background danger</h3>
+  </div>
+
+  <div class="content has-background-info">
+    <h3>class content, background info</h3>
+  </div>
+
+  <div class="section has-background-warning">
+    <h3>class section, background warning</h3>
+    <div class="section has-background-success">
+      <h3>class section, background success</h3>
+    </div>
+  </div>
+
+  <div class="section  has-background-success">
+    <h3>class section, background success</h3>
+    <div class="content has-background-info">
+      <h3>class content, background info</h3>
+    </div>
+    <div class="container has-background-danger">
+      <h3>class container, background danger</h3>
+    </div>
+  </div>
+
+  <section class="section has-background-success mx-5 my-5 px-5 py-5">
+    <h3>class section, background success, margin 5, padding 5</h3>
+    <div class="content has-background-info">
+      <h3>class content, background info</h3>
+    </div>
+    <div class="content has-background-info px-5 py-5 mx-5 my-5">
+      <h3>class content, background info, margin 5, padding 5</h3>
+    </div>
+    <div class="content has-background-info">
+      <h3>class content, background info</h3>
+    </div>
+    <div class="container has-background-danger">
+      <h3>class container, background danger</h3>
+    </div>
+    <div class="container has-background-danger px-5 py-5 mx-5 my-5">
+      <h3>class container, margin 5, padding 5‚</h3>
+    </div>
+  </section>
+
+  <div class="section has-background-success">
+    <h3>section</h3>
+    <div class="container has-background-danger">
+      <h3>class container</h3>
+    </div>
+    <div class="container has-background-danger px-5 py-5 mx-5 my-5">
+      <h3>class container, margin 5, padding 5</h3>
+      <h1>margin breaks alignment</h1>
+    </div>
+  </div>
+
+  <div class="container has-background-danger">
+    <h3>container</h3>
+    <div class="container has-background-warning">
+      <h3>container inside container</h3>
+      <div class="section has-background-success">
+        <h3>section inside container inside container</h3>
+        <div class="container has-background-danger">
+          <h3>container inside section inside ...</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>section>container>(content, content, ...)</h3>
+
+  <div class="section notification is-warning ">
+    <div class="container">
+      <div class="content my-6">
+        <h3>Lorem ipsum dolor sit amet.</h3>
+      </div>
+      <div class="content my-6">
+        <h3>Lorem ipsum dolor sit amet.</h3>
+      </div>
+
+
+      <%# Columns %>
+      <div class="section">
+        <h1>columns: <br>notification leads to at least one being longer</h1>
+        <h1>auto gap doesn't work</h1>
+      </div>
+      <div class="columns">
+        <div class="column notification is-danger">notification</div>
+        <div class="column has-background-info has-text-centered is-vcentered">
+          normal <br> <br> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Ipsum, maiores.Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet.</div>
+        <div class="column box has-background-info has-text-centered">box</div>
+        <div class="column notification is-danger has-text-centered">notification</div>
+        <div class="column has-background-info has-text-centered">normal <br> <br> Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="column notification is-dark-ter">4 Lorem ipsum dolor sit amet consectetur.</div>
+      </div>
+
+      <div class="section">
+        <h3>Columns: is-multiline, is-centered</h3>
+      </div>
+      <div class="columns is-multiline is-centered has-text-centered is-variable is-6">
+        <div class="column is-4 has-background-success-dark">Lorem ipsum dolor sit amet.</div>
+        <div class="column is-8 has-background-primary">Lorem ipsum dolor sit amet.</div>
+        <div class="column is-8 has-background-primary-dark">Lorem ipsum dolor sit amet.</div>
+        <div class="column is-4 has-background-primary">Lorem ipsum dolor sit amet.</div>
+        <div class="column is-4 has-background-success">Lorem ipsum dolor sit amet.</div>
+        <div class="column is-8 has-background-link">Lorem ipsum dolor sit amet.</div>
+        <div class="column is-4 has-background-info">Lorem ipsum dolor sit amet.</div>
+        <div class="column is-4 has-background-primary">Lorem ipsum dolor sit amet.</div>
+      </div>
+
+
+      <%# Column gaps %>
+      <div class="section">
+        <h1>Columns: manual gaps</h1>
+      </div>
+
+      <h3>margins work for symmetrical layouts</h3>
+      <div class="columns has-background-info">
+        <div class="column has-background-primary mx-4 my-4">column margin 4</div>
+        <div class="column has-background-primary mx-4 my-4">column margin 4</div>
+        <div class="column has-background-primary mx-4 my-4">column margin 4</div>
+      </div>
+      <div class="columns has-background-info">
+        <div class="column has-background-primary mx-4 my-4">column margin 4</div>
+        <div class="column has-background-primary mx-4 my-4">column margin 4</div>
+      </div>
+
+      <div class="section mb-6">
+        <h3>centered with empty columns works for asymetrical layouts (barely)</h3>
+        <div class="columns is-multiline is-centered is-variable is-6 has-text-centered">
+          <div class="column has-background-primary is-3 "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, nihil? </div>
+          <div class="column is-1"></div>
+          <div class="column has-background-primary is-3 "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, nihil? </div>
+          <div class="column is-1"></div>
+          <div class="column has-background-primary is-3 "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, nihil? </div>
+          <div class="column is-full my-4"></div>
+          <div class="column has-background-primary is-7 "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, nihil? </div>
+          <div class="column is-1"></div>
+          <div class="column has-background-primary is-3 "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, nihil? </div>
+        </div>
+      </div>
+
+
+      <%# Column design %>
+      <div class="title my-6 is-2 ">column design</div>
+      <div class="title is-3 mt-5">title inside column</div>
+      <div class="columns has-text-centered">
+        <div class="column mx-4 my-4 has-background-primary">
+          <div class="title has-background-success-dark">Title</div>
+          <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, sunt?</div>
+        </div>
+        <div class="column mx-4 my-4 has-background-primary">
+          <div class="title has-background-success-dark">Title</div>
+          <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, sunt?</div>
+        </div>
+        <div class="column mx-4 my-4 has-background-primary">
+          <div class="title has-background-success-dark">veeeeeeeeeeeeeery long Title</div>
+          <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, sunt?</div>
+        </div>
+      </div>
+
+      <div class="title is-3 mt-5">titles inside own title columns (regulates hight, doesnt work with mobile)</div>
+      <div class="columns has-text-centered">
+        <div class="column mx-4 mt-4 has-background-success-dark">
+          <div class="title ">Title</div>
+        </div>
+        <div class="column mx-4 mt-4 has-background-success-dark">
+          <div class="title ">Title</div>
+        </div>
+        <div class="column mx-4 mt-4 has-background-success-dark">
+          <div class="title ">veeeeeeeeeeeeeery long Title</div>
+        </div>
+      </div>
+      <div class="columns has-text-centered">
+        <div class="column mx-4 mb-4 has-background-primary">
+          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, vel.</div>
+        </div>
+        <div class="column mx-4 mb-4 has-background-primary">
+          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, vel.</div>
+        </div>
+        <div class="column mx-4 mb-4 has-background-primary">
+          <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident.Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, vel.</div>
+        </div>
+      </div>
+
+      <div class="title is-3 mt-5">colored background, title and content separated</div>
+      <div class="columns has-text-centered has-background-info">
+        <div class="column mx-4 my-4 has-background-success-dark">
+          <div class="title ">Title</div>
+        </div>
+        <div class="column mx-4 my-4 has-background-success-dark">
+          <div class="title ">Title</div>
+        </div>
+        <div class="column mx-4 my-4 has-background-success-dark">
+          <div class="title ">veeeeeeeeeeeeeery long Title</div>
+        </div>
+      </div>
+      <div class="columns has-text-centered has-background-info">
+        <div class="column mx-4 my-4 has-background-primary">
+          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, vel.</div>
+        </div>
+        <div class="column mx-4 my-4 has-background-primary">
+          <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, vel.</div>
+        </div>
+        <div class="column mx-4 my-4 has-background-primary">
+          <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident.Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, vel.</div>
+        </div>
+      </div>
+
+      <%# Tiles %>
+      <div class="section">
+        <div class="title is-2 my-6">Tiles</div>
+      </div>
+
+      <div class="tile is-ancestor ">
+        <div class="tile is-parent is-6">
+          <div class="tile is-child box">
+            <div class="title">1</div>
+            <div class="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero harum minus perferendis quisquam, possimus nobis illum necessitatibus, cumque est laudantium molestiae doloremque quae accusantium nesciunt repellat at quaerat, sed quibusdam eius! Et, culpa illum! Nostrum, qui impedit! Dolor natus vero praesentium repudiandae consequuntur temporibus, iusto atque, nulla sit, quibusdam ipsa!</div>
+          </div>
+        </div>
+        <div class="tile is-vertical">
+          <div class="tile is-parent">
+            <div class="tile is-child box">
+              <div class="title">1/2</div>
+              <div class="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero harum minus perferendis quisquam, possimus nobis illum necessitatibus, cumque est laudantium molestiae doloremque quae accusantium nesciunt repellat at quaerat, sed quibusdam eius! Et, culpa illum! Nostrum, qui impedit! Dolor natus vero praesentium repudiandae consequuntur temporibus, iusto atque, nulla sit, quibusdam ipsa!</div>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="tile is-parent">
+              <div class="tile is-child box">
+                <div class="title">1/4</div>
+                <div class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eius debitis itaque eveniet magnam qui iure totam? Aut, quam nemo?</div>
+              </div>
+            </div>
+            <div class="tile is-vertical">
+              <div class="tile is-parent">
+                <div class="tile is-child box">
+                  <div class="title">1/8</div>
+                  <div class="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicipsa!</div>
+                </div>
+              </div>
+              <div class="tile">
+                <div class="tile is-parent">
+                  <div class="tile is-child box">
+                    <div class="title">1/16</div>
+                    <div class="subtitle">Lorem ipsum dolor sit</div>
+                  </div>
+                </div>
+                <div class="tile is-vertical">
+                  <div class="tile is-parent">
+                    <div class="tile is-child box">
+                      <div class="title is-4">1/32</div>
+                    </div>
+                  </div>
+                  <div class="tile is-parent">
+                    <div class="tile is-child box is-invisible">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="title mt-6">images + description <br> (tiles have no is-vcentered. have to use tiles + columns)<br>(doesn't work on mobile)</div>
+      <div class="tile is-ancestor is-vertical">
+        <div class="tile is-parent">
+          <div class="tile box is-child">
+            <div class="columns is-vcentered">
+              <div class="column is-8">
+                <div class="title has-text-centered">title</div>
+                <div class="content is-size-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis et deleniti nihil tempore nobis, officia iure magni cum libero voluptates.</div>
+              </div>
+              <div class="column">
+                <div class="image is-4by3 has-background-info"></div>
+                <div class="subtitle has-text-centered">description</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile box is-child">
+            <div class="columns is-vcentered">
+              <div class="column">
+                <div class="image is-4by3 has-background-info"></div>
+                <div class="subtitle has-text-centered">description</div>
+              </div>
+              <div class="column is-8">
+                <div class="title has-text-centered">title</div>
+                <div class="content is-size-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis et deleniti nihil tempore nobis, officia iure magni cum libero voluptates.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
