@@ -1,0 +1,42 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+
+      <div class="column is-6 box has-background-info-light">
+
+        <div class="title is-size-3 has-text-centered my-5">Neuen Produkt-Eintrag generieren</div>
+
+        <%= form_with scope: :product, url: products_path, local: true do |f| %>
+
+          <p>
+            <div class="field">
+              <%= f.label :Name, class: "title is-size-4" %> <br>
+              <div class="control">
+                <%= f.text_field :name, class: "input is-info", type: "text", placeholder: "Namen eingeben..." %>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <div class="field">
+              <%= f.label :Beschreibung, class: "title is-size-4" %> <br>
+              <div class="control">
+                <div class="content has-text-centered">
+                  <%= f.text_area :description, class: "textarea is-info", placeholder: "Beschreibung eingeben...", rows: "4" %>
+                </div>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <div class="field">
+              <%= f.submit :speichern, class: "button is-success" %>
+            </div>
+          </p>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
