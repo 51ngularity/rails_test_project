@@ -28,4 +28,10 @@ class ProductsController < ApplicationController
     @product.update(params.require(:product).permit(:name, :description))
     redirect_to product_path(@product.id)
   end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to products_path
+  end
 end
