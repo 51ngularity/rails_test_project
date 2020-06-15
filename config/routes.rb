@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   resources :products, only: %i[index show new create]
   get 'bulma_layouts', to: 'bulma#bulma_layouts'
+  get 'bulma_elements', to: 'bulma#bulma_elements'
 end
