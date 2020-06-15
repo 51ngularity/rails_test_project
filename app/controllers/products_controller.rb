@@ -9,4 +9,14 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  def new 
+  end
+
+  def create
+    @product = Product.new(params.require(:product).permit(:name, :description))
+    @product.save
+    redirect_to product_path(@product.id)
+  end
+
 end
