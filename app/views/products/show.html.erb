@@ -1,6 +1,35 @@
-<h1>Product Info</h1>
+<div class="section">
+  <div class="container">
 
-<p>Name: <%= @product.name %> </p>
-<p>Description: <%= @product.description %> </p>
+    <div class="title has-text-centered is-2 mb-6">Produktbeschreibung</div>
 
-description
+    <div class="columns box is-centered has-background-white-bis mb-6">
+      <div class="column  is-11">
+
+        <div class="tile is-ancestor is-vertical">
+          <div class="tile is_parent my-6">
+            <div class="tile is-child">
+              <div class="title is-4 mb-4">Name:</div>
+            </div>
+            <div class="tile is-child is-9">
+              <div class="title is-4"><%= @product.name %></div>
+            </div>
+          </div>
+
+          <div class="tile is_parent">
+            <div class="tile is-child">
+              <div class="title is-4 mb-4">Beschreibung:</div>
+            </div>
+            <div class="tile is-child is-9">
+              <div class="content is-medium mb-6"><%= @product.description %></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <%= link_to 'zurück zur Produktliste', '/products', class: 'button is-size-3 is-info is-outlined' %>
+
+  </div>
+</div>
