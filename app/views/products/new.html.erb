@@ -1,18 +1,16 @@
 <div class="section">
   <div class="container">
     <div class="columns is-centered">
+      <div class="column is-6">
+        
+        <div class="title is-size-3 has-text-centered">Neuen Produkt-Eintrag generieren</div>
 
-      <div class="column is-6 box has-background-info-light">
-
-        <div class="title is-size-3 has-text-centered my-5">Neuen Produkt-Eintrag generieren</div>
-
-        <%= form_with scope: :product, url: products_path, local: true do |f| %>
-
+        <%= form_with scope: :product, class: 'box has-background-info-light  my-6', url: products_path, local: true do |f| %>
           <p>
             <div class="field">
               <%= f.label :Name, class: "title is-size-4" %> <br>
               <div class="control">
-                <%= f.text_field :name, class: "input is-info", type: "text", placeholder: "Namen eingeben..." %>
+                <%= f.text_field :name, class: "input is-info", type: "text", placeholder: "Namen eingeben...", minlength: "3", maxlength: "100" %>
               </div>
             </div>
           </p>
@@ -22,7 +20,7 @@
               <%= f.label :Beschreibung, class: "title is-size-4" %> <br>
               <div class="control">
                 <div class="content has-text-centered">
-                  <%= f.text_area :description, class: "textarea is-info", placeholder: "Beschreibung eingeben...", rows: "4" %>
+                  <%= f.text_area :description, class: "textarea is-info", placeholder: "Beschreibung eingeben...", rows: "4", minlength: "10", maxlength: "5000" %>
                 </div>
               </div>
             </div>
@@ -30,11 +28,16 @@
 
           <p>
             <div class="field">
-              <%= f.submit :speichern, class: "button is-success" %>
+              <div class="level">
+                <div class="level-item">
+                  <%= f.submit :"speichern", class: "button is-success is-medium" %>
+                </div>
+              </div>
             </div>
           </p>
-
         <% end %>
+
+    <%= link_to 'zurück zur Produktliste', '/products', class: 'button is-size-3 is-info is-outlined' %>
 
       </div>
     </div>
