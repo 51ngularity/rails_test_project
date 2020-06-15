@@ -1,0 +1,49 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        
+        <div class="title is-size-3 has-text-centered">Produkt-Eintrag bearbeiten</div>
+
+        <div class="box has-background-info-light my-6">
+
+        <!-- was not able to add a class to form and had to use the box as a separate tag -->
+        <%= form_with(model: @product, local: true) do |f| %>
+          <p>
+            <div class="field">
+              <%= f.label :Name, class: "title is-size-4" %> <br>
+              <div class="control">
+                <%= f.text_field :name, class: "input is-info", type: "text", placeholder: "Namen eingeben...", minlength: "3", maxlength: "100" %>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <div class="field">
+              <%= f.label :Beschreibung, class: "title is-size-4" %> <br>
+              <div class="control">
+                <div class="content has-text-centered">
+                  <%= f.text_area :description, class: "textarea is-info", placeholder: "Beschreibung eingeben...", rows: "4", minlength: "10", maxlength: "5000" %>
+                </div>
+              </div>
+            </div>
+          </p>
+
+          <p>
+            <div class="field">
+              <div class="level">
+                <div class="level-item">
+                  <%= f.submit :"speichern", class: "button is-success is-medium" %>
+                </div>
+              </div>
+            </div>
+          </p>
+        <% end %>
+        </div>
+
+    <%= link_to 'zurück zur Produktliste', '/products', class: 'button is-size-3 is-info is-outlined' %>
+
+      </div>
+    </div>
+  </div>
+</div>
