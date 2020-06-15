@@ -1,23 +1,95 @@
-<h1>List of Products</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <body>
-        <% @products.each do |product| %>
-        <tr>
-            <td> <%= product.name %> </td>
-            <td> <%= product.description %> </td>
-            <td> placeholder </td>
-        </tr>
-        <% end %>
-    </body>
-</table>
+<div class="section">
+  <div class="container">
 
+    <div class="columns is-centered">
+      <div class="column box is-11 has-background-white-bis">
 
+        <div class="title is-2 mb-6 mt-5 has-text-centered">Produktliste</div>
 
+        <table class="table is-hoverable is-striped">
+          <thead>
+            <tr>
+              <th>
+                <div class="content is-size-5">Produktname</div>
+              </th>
+              <th>
+                <div class="content is-size-5">Beschreibung</div>
+              </th>
+              <th>
+                <div class="content is-size-5 has-text-centered">Aktionen</div>
+              </th>
+            </tr>
+          </thead>
+
+          <tfoot>
+            <tr>
+              <th>
+                <div class="content is-size-5">Produktname</div>
+              </th>
+              <th>
+                <div class="content is-size-5">Beschreibung</div>
+              </th>
+              <th>
+                <div class="content is-size-5 has-text-centered">Aktionen</div>
+              </th>
+            </tr>
+          </tfoot>
+
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+                <div class="title is-3 has-text-success has-text-centered  my-4">Neuen Eintrag hinzufügen </div>
+              </td>
+              <td>
+                <div class="content has-text-centered">
+                    <%= link_to "NEU" ,new_product_path , class: "button is-success is-large" %>
+
+                  <!-- was not able to make a button with a link that displays an icon
+
+                  <div class="button is-success is-large">
+                    <span class="icon">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  </div>
+
+                  -->
+                </div>
+              </td>
+            </tr>
+            <% if @products.blank? %>
+              <tr>
+                <td></td>
+                <td>
+                  <div class="section is-medium">
+                    <div class="title is-2">Leider noch keine Einträge vorhanden</div>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+            <% else %>
+              <% @products.each do |p| %>
+              <tr>
+                <td><%= link_to p.name, product_path(p.id), class: "content is-info " %></td>
+                <td><%= p.description %></td>
+                <td>
+                  <div class="content has-text-centered">
+                  <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2" %>
+
+                  <!-- delete button doesn't work -->
+                  <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5" %>
+                                 
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+</div>
