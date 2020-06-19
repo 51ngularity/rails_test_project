@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-# Top level omment describing class function
 class ProductsController < ApplicationController
+  def redirect_to_index
+    redirect_to products_path
+  end
+
   def index
     @products = Product.all
   end
