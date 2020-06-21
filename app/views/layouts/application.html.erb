@@ -1,34 +1,21 @@
-<%
-=begin%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>ProduktVergleich</title>
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-
-<body>
-  <%= yield %>
-</body>
-
-</html>
-<%
-=end%>
-
-<!DOCTYPE html>
-<html>
-
-<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Produktvergleich</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </head>
 
 <body>
@@ -36,10 +23,10 @@
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          header with color gradient and margin 4
+          Produktvergleich
         </h1>
         <h1 class="subtitle">
-          subtitle
+          Die Seite Nr.1 für den Vergleich von CRM-Software und Rasenmähern
         </h1>
       </div>
     </div>
@@ -54,7 +41,7 @@
   <footer class="footer has-background-grey-light my-4 mx-4">
     <div class="content has-text-centered">
       <p>
-        <div class="title">I am a footer with a light gray background and margin 4</div>
+        <div class="title">&copy 2020; Nenaschew Sergey</div>
       </p>
     </div>
   </footer>
