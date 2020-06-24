@@ -76,11 +76,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
             # th0 = ths.first
             # byebug
             # assert_select ths[0], 'div', { count: 1, text: 'Aktionen' }
-            assert_select ths[0], 'div', 'Aktionen'
-            assert_select ths[1], 'div', 'Produktname'
-            assert_select ths[2], 'div', 'Beschreibung'
-            assert_select ths[-1], 'div', 'Aktionen'
-            assert_select ths[-2], 'div', 'Produktname'
+            assert_select ths[0], 'div', 'Aktionen', %q[in line 79 "assert_select ths[0], 'div', 'Aktionen'" failed]
+            assert_select ths[1], 'div', 'Produktname', %q[in line 80 "assert_select ths[1], 'div', 'Produktname'" failed]
+            assert_select ths[2], 'div', 'Beschreibung', %q[in line 81 "assert_select ths[2], 'div', 'Beschreibung'" failed]
+            assert_select ths[-1], 'div', 'Aktionen', %q[in line 82 "assert_select ths[-1], 'div', 'Aktionen'" failed]
+            assert_select ths[-2], 'div', 'Produktname', %q[in line 83 "assert_select ths[-2], 'div', 'Produktname'" failed]
           end
         end
       end
@@ -88,11 +88,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       assert_select 'tfoot' do
         assert_select 'tr' do
           assert_select 'th' do |ths|
-            assert_select ths[0], 'div', 'Aktionen'
-            assert_select ths[1], 'div', 'Produktname'
-            assert_select ths[2], 'div', 'Beschreibung'
-            assert_select ths[-1], 'div', 'Aktionen'
-            assert_select ths[-2], 'div', 'Produktname'
+            assert_select ths[0], 'div', 'Aktionen', 'in line 91 > assert_select ths[0], div, Aktionen < failed'
+            assert_select ths[1], 'div', 'Produktname', 'in line 92 > assert_select ths[1], div, Produktname < failed'
+            assert_select ths[2], 'div', 'Beschreibung', 'in line 93 > assert_select ths[2], div, Beschreibung < failed'
+            assert_select ths[-1], 'div', 'Aktionen', 'in line 94 > assert_select ths[-1], div, Aktionen < failed'
+            assert_select ths[-2], 'div', 'Produktname', 'in line 95 > assert_select ths[-2], div, Produktname < failed'
           end
         end
       end
@@ -100,29 +100,29 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       assert_select 'tbody' do
         assert_select 'tr' do |trs|
           assert_select trs[0], 'td' do |tds|
-            assert_select tds[0], 'div', 'NEU'
-            assert_select tds[2], 'div', 'Neuen Eintrag hinzufügen'
-            assert_select tds[-1], 'div', 'NEU'
+            assert_select tds[0], 'div', 'NEU', %q[in line 103 "assert_select tds[0], 'div', 'NEU'" failed]
+            assert_select tds[2], 'div', 'Neuen Eintrag hinzufügen', %q[in line 104 "assert_select tds[2], 'div', 'Neuen Eintrag hinzufügen'" failed]
+            assert_select tds[-1], 'div', 'NEU', %q[in line 105 "assert_select tds[-1], 'div'" failed]
           end
 
           if Product.all.blank?
             assert_equal trs.count, 2
             assert_select trs[1], 'td' do |tds|
-              assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden'
+              assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden', %q[in line 111 "assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden'" failed]
             end
           else
-            assert_equal trs.count, Product.all.count + 1
+            assert_equal trs.count, Product.all.count + 1, %q[in line 114 "assert_equal trs.count, Product.all.count + 1" failed]
 
             (0...Product.all.count).each do |i|
               products = Product.all
               assert_select trs[i + 1], 'td' do |tds|
-                assert_select tds[0], 'div a', 'Bearbeiten'
-                assert_select tds[0], 'div a', 'Löschen'
-                assert_select tds[-1], 'div a', 'Bearbeiten'
-                assert_select tds[-1], 'div a', 'Löschen'
-                assert_select tds[1], 'a', products[i].name
-                assert_select tds[-2], 'a', products[i].name
-                assert_select tds[2], 'div', products[i].description
+                assert_select tds[0], 'div a', 'Bearbeiten', %q[in line 119 "assert_select tds[0], 'div a', 'Bearbeiten'" failed]
+                assert_select tds[0], 'div a', 'Löschen', %q[in line 120 "assert_select tds[0], 'div a', 'Löschen'" failed]
+                assert_select tds[-1], 'div a', 'Bearbeiten', %q[in line 121 "assert_select tds[-1], 'div a', 'Bearbeiten'" failed]
+                assert_select tds[-1], 'div a', 'Löschen', %q[in line 122 "assert_select tds[-1], 'div a', 'Löschen'" failed]
+                assert_select tds[1], 'a', products[i].name, %q[in line 123 "assert_select tds[1], 'a', products[i].name" failed]
+                assert_select tds[-2], 'a', products[i].name, %q[in line 124 "assert_select tds[-2], 'a', products[i].name" failed]
+                assert_select tds[2], 'div', products[i].description, %q[in line 125 "assert_select tds[2], 'div', products[i].description" failed]
               end
             end
           end
