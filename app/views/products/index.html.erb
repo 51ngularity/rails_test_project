@@ -104,8 +104,9 @@
               <% if @products.blank? %>
                 <tr>
                   <td></td>
+                  <td></td>
                   <td>
-                    <div class="section is-medium">
+                    <div class="section is-medium has-text-centered">
                       <div class="title is-2">Leider noch keine Einträge vorhanden</div>
                     </div>
                   </td>
@@ -121,7 +122,7 @@
                       </div>
                     </td>
                     <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info " %> </u></td>
-                    <td><%= p.description %></td>
+                    <td><div> <%= p.description %> </div></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -138,7 +139,7 @@
             </tbody>
           </table>
         </div>
-
+        
       </div>
     </div>
 

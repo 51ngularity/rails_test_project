@@ -6,16 +6,13 @@
         <div class="title is-size-3 has-text-centered">Neuen Produkt-Eintrag generieren</div>
 
         <%= form_with scope: :product, class: 'box has-background-info-light  my-6', url: products_path, local: true do |f| %>
-          <p>
             <div class="field">
               <%= f.label :Name, class: "title is-size-4" %> <br>
               <div class="control">
                 <%= f.text_field :name, class: "input is-info", type: "text", placeholder: "Namen eingeben...", minlength: "3", maxlength: "100" %>
               </div>
             </div>
-          </p>
 
-          <p>
             <div class="field">
               <%= f.label :Beschreibung, class: "title is-size-4" %> <br>
               <div class="control">
@@ -24,9 +21,7 @@
                 </div>
               </div>
             </div>
-          </p>
 
-          <p>
             <div class="field">
               <div class="level">
                 <div class="level-item">
@@ -34,7 +29,6 @@
                 </div>
               </div>
             </div>
-          </p>
         <% end %>
 
     <%= link_to 'zurück zur Produktliste', '/products', class: 'button is-size-3 is-info is-outlined' %>
