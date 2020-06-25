@@ -41,17 +41,22 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update product via patch' do
     p = Product.last
-    patch product_path(p.id), params: { product: { name: 'new name' } }
+    id_old = p.id
+    patch product_path(p.id), params: { product: { name: 'new name 1', description: 'new description 1' } }
     assert_redirected_to product_path(p.id)
     p.reload
-    assert_equal 'new name', p.name
+    assert_equal p.id, id_old
+    assert_equal 'new name 1', p.name
+    assert_equal 'new description 1', p.description
   end
 
   test 'should update product via put' do
     p = Product.last
+    id_old = p.id
     put product_path(p.id), params: { product: { name: 'new name 2', description: 'new description 2' } }
     assert_redirected_to product_path(p.id)
     p.reload
+    assert_equal p.id, id_old
     assert_equal 'new name 2', p.name
     assert_equal 'new description 2', p.description
   end
