@@ -12,7 +12,7 @@
             <div class="field">
               <%= f.label :Name, class: "title is-size-4" %> <br>
               <div class="control">
-                <%= f.text_field :name, class: "input is-info", type: "text", placeholder: "Namen eingeben...", minlength: "3", maxlength: "100" %>
+                <%= f.text_field :name, class: "input is-info", type: "text", minlength: "3", maxlength: "100" %>
               </div>
             </div>
 
@@ -20,7 +20,7 @@
               <%= f.label :Beschreibung, class: "title is-size-4" %> <br>
               <div class="control">
                 <div class="content has-text-centered">
-                  <%= f.text_area :description, class: "textarea is-info", placeholder: "Beschreibung eingeben...", rows: "4", minlength: "10", maxlength: "5000" %>
+                  <%= f.text_area :description, class: "textarea is-info", rows: "4", minlength: "10", maxlength: "5000" %>
                 </div>
               </div>
             </div>
