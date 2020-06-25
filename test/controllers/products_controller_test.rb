@@ -105,9 +105,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
             assert_select tds[-1], 'div', 'NEU', %q[in line 105 "assert_select tds[-1], 'div'" failed]
           end
 
+          # Product.destroy_all
+          # get products_path
           if Product.all.blank?
             assert_equal trs.count, 2
             assert_select trs[1], 'td' do |tds|
+              # byebug
               assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden', %q[in line 111 "assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden'" failed]
             end
           else
