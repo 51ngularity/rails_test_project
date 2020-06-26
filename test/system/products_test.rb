@@ -9,7 +9,7 @@ class ProductsTest < ApplicationSystemTestCase
     assert_selector 'table'
     assert_selector 'div', text: 'Neuen Eintrag hinzufügen'
     # assert_equal Product.count, 0
-    # assert_selector 'div', text: 'Leider noch keine Einträge vorhanden'
+    # assert_selector 'div', text: 'Leider noch keine Eintraege vorhanden'
     # can't test, fixtures occupy table
     assert_selector 'div', text: 'NEU'
     assert_selector 'div', text: 'Bearbeiten'
@@ -48,9 +48,13 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test 'visiting edit from index' do
-    # Product.create(name: 'name for editing', description: 'description for editing')
-    p = Product.last
+    (0...3).each do |x|
+      Product.create(name: "name for editing #{x}", description: "description for editing #{x}")
+    end
+    products = Product.all
+    p = products[rand(products.size)]
     visit products_path
+    byebug
     assert_no_selector 'div', text: 'edited_name'
     assert_no_selector 'div', text: 'edited_description'
     click_link 'Bearbeiten', href: edit_product_path(p.id), match: :first
@@ -64,6 +68,7 @@ class ProductsTest < ApplicationSystemTestCase
     fill_in 'product_name', with: 'edited_name'
     fill_in 'product_description', with: 'edited_description'
     click_on 'speichern'
+    assert_selector 'div', text: 'Produktbeschreibung'
     click_on 'zurück zur Produktliste'
     assert_selector 'div', text: 'Produktliste'
     assert_selector 'div', text: 'edited_name'
