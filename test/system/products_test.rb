@@ -57,12 +57,12 @@ class ProductsTest < ApplicationSystemTestCase
     byebug
     assert_no_selector 'div', text: 'edited_name'
     assert_no_selector 'div', text: 'edited_description'
-    click_link 'Bearbeiten', href: edit_product_path(p.id), match: :first
+    click_link 'Bearbeiten', id: "#{p.id}_edit_left"
     assert_selector 'div', text: 'Produkt-Eintrag bearbeiten'
     assert_selector 'div', text: 'Name'
     assert_selector 'div', text: 'Beschreibung'
-    assert_selector 'input' do |i|
-      assert_equal i.value, p.name
+    assert_selector 'input', id: 'product_name', count: 1 do |name_input|
+      assert_equal p.name, name_input[:value]
     end
     assert_selector 'textarea', text: p.description
     fill_in 'product_name', with: 'edited_name'
