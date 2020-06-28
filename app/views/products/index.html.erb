@@ -132,8 +132,8 @@
                   <tr>
                     <td>
                       <div class="content has-text-centered">
-                        <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2", name: 'edit_left', id: "product_#{p.id}_edit_left" %>
-                        <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5", name: 'delete_left', id: "product_#{p.id}_delete_left" %>
+                        <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2", name: 'edit_left', id: "#{p.id}_edit_left" %>
+                        <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5", name: 'delete_left', id: "#{p.id}_delete_left" %>
                       </div>
                     </td>
                     <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info " %> </u></td>
@@ -144,8 +144,8 @@
                     <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info " %> </u></td>
                     <td>
                       <div class="content has-text-centered">
-                        <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2", name: 'edit_right', id: "product_#{p.id}_edit_right" %>
-                        <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5", name: 'delete_right', id: "product_#{p.id}_delete_right" %>
+                        <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2", name: 'edit_right', id: "#{p.id}_edit_right" %>
+                        <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5", name: 'delete_right', id: "#{p.id}_delete_right" %>
                       </div>
                     </td>
                   </tr>
