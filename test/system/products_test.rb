@@ -17,8 +17,8 @@ class ProductsTest < ApplicationSystemTestCase
     end
     visit products_path
     assert_selector 'div', text: 'NEU'
-    assert_selector 'div', text: 'Bearbeiten'
-    assert_selector 'div', text: 'Löschen'
+    assert_selector 'a', text: 'Bearbeiten'
+    assert_selector 'a', text: 'Löschen'
   end
 
   test 'visiting show from index' do
@@ -59,7 +59,6 @@ class ProductsTest < ApplicationSystemTestCase
     products = Product.all
     p = products[rand(products.size)]
     visit products_path
-    byebug
     assert_no_selector 'div', text: 'edited_name'
     assert_no_selector 'div', text: 'edited_description'
     click_link 'Bearbeiten', id: "#{p.id}_edit_left"
