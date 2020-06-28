@@ -69,7 +69,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to products_path
   end
 
-# testing views
+  # testing views
 
   test 'testing index elements' do
     (0...rand(5)).each do |x|
@@ -159,11 +159,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'div', 'Neuen Produkt-Eintrag generieren'
 
     assert_select 'form' do
-      assert_select 'label', 'Name'
-      assert_select 'label', 'Beschreibung'
-      assert_select 'input', type: 'text', count: 2
-      assert_select 'textarea', 1
-      assert_select 'input', { type: 'submit', value: 'speichern' }
+      assert_select 'label', 'Name', count: 1
+      assert_select 'label', 'Beschreibung', count: 1
+      assert_select 'input#product_name', count: 1 do |input|
+        assert_nil input.first.attr('value')
+      end
+      assert_select 'textarea', count: 1, value: nil
+      assert_select 'input#product_submit', count: 1 do |input|
+        assert_equal 'speichern', input.first.attr('value')
+      end
     end
 
     assert_select 'a', 'zurück zur Produktliste'
@@ -174,25 +178,29 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get edit_product_path(p.id)
     assert_select 'div', 'Produkt-Eintrag bearbeiten'
 
-    assert_select 'form' do
-      assert_select 'label', 'Name'
-      assert_select 'label', 'Beschreibung'
-      assert_select 'input', type: 'text', count: 3, value: p.name
+    assert_select 'form', count: 1 do
+      assert_select 'label', 'Name', count: 1
+      assert_select 'label', 'Beschreibung', count: 1
+      assert_select 'input#product_name', count: 1 do |input|
+        assert_equal p.name, input.first.attr('value')
+      end
       assert_select 'textarea', count: 1, value: p.description
-      assert_select 'input', { type: 'submit', value: 'speichern' }
+      assert_select 'input#product_submit', count: 1 do |input|
+        assert_equal 'speichern', input.first.attr('value')
+      end
     end
 
-    assert_select 'a', 'zurück zur Produktliste'
+    assert_select 'a', 'zurück zur Produktliste', count: 1
   end
 
   test 'testing show elements' do
     p = Product.last
     get product_path(p.id)
-    assert_select 'div', 'Produktbeschreibung'
-    assert_select 'div', 'Name:'
-    assert_select 'div', 'Beschreibung:'
-    assert_select 'div', p.name
-    assert_select 'div', p.description
-    assert_select 'a', 'zurück zur Produktliste'
+    assert_select 'div', 'Produktbeschreibung', count: 1
+    assert_select 'div', 'Name:', count: 1
+    assert_select 'div', 'Beschreibung:', count: 1
+    assert_select 'div', p.name, count: 1
+    assert_select 'div', p.description, count: 1
+    assert_select 'a', 'zurück zur Produktliste', count: 1
   end
 end
