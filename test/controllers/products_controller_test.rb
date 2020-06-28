@@ -113,29 +113,41 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
             assert_select tds[-1], 'div', 'NEU', %q[in line 105 "assert_select tds[-1], 'div'" failed]
           end
 
-          # Product.destroy_all
-          # get products_path
-          if Product.all.blank?
-            assert_equal trs.count, 2
-            assert_select trs[1], 'td' do |tds|
-              # byebug
-              assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden', %q[in line 111 "assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden'" failed]
-            end
-          else
-            assert_equal trs.count, Product.all.count + 1, %q[in line 114 "assert_equal trs.count, Product.all.count + 1" failed]
+          assert_equal trs.count, Product.all.count + 1, %q[in line 114 "assert_equal trs.count, Product.all.count + 1" failed]
 
-            (0...Product.all.count).each do |i|
-              products = Product.all
-              assert_select trs[i + 1], 'td' do |tds|
-                assert_select tds[0], 'div a', 'Bearbeiten', %q[in line 119 "assert_select tds[0], 'div a', 'Bearbeiten'" failed]
-                assert_select tds[0], 'div a', 'Löschen', %q[in line 120 "assert_select tds[0], 'div a', 'Löschen'" failed]
-                assert_select tds[-1], 'div a', 'Bearbeiten', %q[in line 121 "assert_select tds[-1], 'div a', 'Bearbeiten'" failed]
-                assert_select tds[-1], 'div a', 'Löschen', %q[in line 122 "assert_select tds[-1], 'div a', 'Löschen'" failed]
-                assert_select tds[1], 'a', products[i].name, %q[in line 123 "assert_select tds[1], 'a', products[i].name" failed]
-                assert_select tds[-2], 'a', products[i].name, %q[in line 124 "assert_select tds[-2], 'a', products[i].name" failed]
-                assert_select tds[2], 'div', products[i].description, %q[in line 125 "assert_select tds[2], 'div', products[i].description" failed]
-              end
+          (0...Product.all.count).each do |i|
+            products = Product.all
+            assert_select trs[i + 1], 'td' do |tds|
+              assert_select tds[0], 'div a', 'Bearbeiten', %q[in line 119 "assert_select tds[0], 'div a', 'Bearbeiten'" failed]
+              assert_select tds[0], 'div a', 'Löschen', %q[in line 120 "assert_select tds[0], 'div a', 'Löschen'" failed]
+              assert_select tds[-1], 'div a', 'Bearbeiten', %q[in line 121 "assert_select tds[-1], 'div a', 'Bearbeiten'" failed]
+              assert_select tds[-1], 'div a', 'Löschen', %q[in line 122 "assert_select tds[-1], 'div a', 'Löschen'" failed]
+              assert_select tds[1], 'a', products[i].name, %q[in line 123 "assert_select tds[1], 'a', products[i].name" failed]
+              assert_select tds[-2], 'a', products[i].name, %q[in line 124 "assert_select tds[-2], 'a', products[i].name" failed]
+              assert_select tds[2], 'div', products[i].description, %q[in line 125 "assert_select tds[2], 'div', products[i].description" failed]
             end
+          end
+        end
+      end
+    end
+  end
+
+  test 'testing empty table in index' do
+    Product.destroy_all
+    assert Product.all.blank?
+    get products_path
+    assert_select 'div', 'Produktliste'
+    assert_select 'table' do
+      assert_select 'tbody' do
+        assert_select 'tr' do |trs|
+          assert_equal trs.size, 2
+          assert_select trs[0], 'td' do |tds|
+            assert_select tds[0], 'div', 'NEU', %q[in line 103 "assert_select tds[0], 'div', 'NEU'" failed]
+            assert_select tds[2], 'div', 'Neuen Eintrag hinzufügen', %q[in line 104 "assert_select tds[2], 'div', 'Neuen Eintrag hinzufügen'" failed]
+            assert_select tds[-1], 'div', 'NEU', %q[in line 105 "assert_select tds[-1], 'div'" failed]
+          end
+          assert_select trs[1], 'td' do |tds|
+            assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden', %q[in line 111 "assert_select tds[2], 'div', 'Leider noch keine Einträge vorhanden'" failed]
           end
         end
       end
