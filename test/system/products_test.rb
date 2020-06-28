@@ -4,13 +4,18 @@ require 'application_system_test_case'
 
 class ProductsTest < ApplicationSystemTestCase
   test 'visiting index' do
-    visit products_url
+    Product.destroy_all
+    visit products_path
     assert_selector 'div', text: 'Produktliste'
     assert_selector 'table'
     assert_selector 'div', text: 'Neuen Eintrag hinzufügen'
-    # assert_equal Product.count, 0
-    # assert_selector 'div', text: 'Leider noch keine Eintraege vorhanden'
-    # can't test, fixtures occupy table
+    assert_equal 0, Product.count
+    assert_selector 'div', text: 'Leider noch keine Einträge vorhanden'
+
+    (0...rand(5)).each do |x|
+      Product.create(name: "product name #{x}", description: "product description #{x}")
+    end
+    visit products_path
     assert_selector 'div', text: 'NEU'
     assert_selector 'div', text: 'Bearbeiten'
     assert_selector 'div', text: 'Löschen'
