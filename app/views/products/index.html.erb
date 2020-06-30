@@ -88,7 +88,7 @@
               <tr>
                 <td>
                   <div class="content has-text-centered">
-                    <a href="products/new" name='new_right'>
+                    <a href="products/new" name='new_left' id='new_left'>
                       <div class="button is-success is-large">
                         <span class="icon">
                           <i class="fas fa-plus"></i>
@@ -108,7 +108,7 @@
                 <td></td>
                 <td>
                   <div class="content has-text-centered">
-                    <a href="products/new" name='new_left'>
+                    <a href="products/new" name='new_right' id='new_right'>
                       <div class="button is-success is-large">
                         <span class="icon">
                           <i class="fas fa-plus"></i>
@@ -139,12 +139,12 @@
                         <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5", name: 'delete_left', id: "#{p.id}_delete_left" %>
                       </div>
                     </td>
-                    <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info " %> </u></td>
+                    <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info", id: 'product_name_left' %> </u></td>
                     <td><div> <%= p.description %> </div></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info " %> </u></td>
+                    <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info", id: 'product_name_right' %> </u></td>
                     <td>
                       <div class="content has-text-centered">
                         <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2", name: 'edit_right', id: "#{p.id}_edit_right" %>
