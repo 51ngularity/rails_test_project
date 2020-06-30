@@ -104,15 +104,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
       assert_select 'tbody', count: 1 do
         assert_select 'tr' do |trs|
+          assert_equal trs.size, Product.count + 1, %q[in line 114 "assert_equal trs.count, Product.all.count + 1" failed]
+
           assert_select trs[0], 'td' do |tds|
             assert_select tds[0], 'div', 'NEU', %q[in line 103 "assert_select tds[0], 'div', 'NEU'" failed]
             assert_select tds[2], 'div', 'Neuen Eintrag hinzufügen', %q[in line 104 "assert_select tds[2], 'div', 'Neuen Eintrag hinzufügen'" failed]
             assert_select tds[-1], 'div', 'NEU', %q[in line 105 "assert_select tds[-1], 'div'" failed]
           end
 
-          assert_equal trs.count, Product.all.count + 1, %q[in line 114 "assert_equal trs.count, Product.all.count + 1" failed]
-
-          (0...Product.all.count).each do |i|
+          (0...Product.count).each do |i|
             products = Product.all
             assert_select trs[i + 1], 'td' do |tds|
               assert_select tds[0], 'div a', 'Bearbeiten', %q[in line 119 "assert_select tds[0], 'div a', 'Bearbeiten'" failed]

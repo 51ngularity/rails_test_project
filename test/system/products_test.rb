@@ -55,8 +55,7 @@ class ProductsTest < ApplicationSystemTestCase
     (1..rand(1..5)).each do |x|
       Product.create(name: "name for editing #{x}", description: "description for editing #{x}")
     end
-    products = Product.all
-    p = products[rand(products.size)]
+    p = Product.all[rand(Product.count)]
     visit products_path
     assert_no_selector 'div', text: 'edited_name'
     assert_no_selector 'div', text: 'edited_description'
