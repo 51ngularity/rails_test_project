@@ -4,8 +4,8 @@ require 'application_system_test_case'
 
 class ProductsTest < ApplicationSystemTestCase
   test 'testing page.all behavior' do
-    (0...2).each do |x|
-      Product.create(name: "name for editing #{x}", description: "description for editing #{x}")
+    (1..rand(1..5)).each do |x|
+      Product.create(name: "product name #{x}", description: "product description #{x}")
     end
     visit products_path
 
@@ -30,8 +30,8 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test 'testing assert_selector behavior' do
-    (0...2).each do |x|
-      Product.create(name: "name for editing #{x}", description: "description for editing #{x}")
+    (1..rand(1..5)).each do |x|
+      Product.create(name: "product name #{x}", description: "product description #{x}")
     end
     visit products_path
 

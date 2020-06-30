@@ -72,7 +72,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   # testing views
 
   test 'testing index elements' do
-    (0...rand(5)).each do |x|
+    (1..rand(1..5)).each do |x|
       Product.create(name: "product name #{x}", description: "product description #{x}")
     end
     get products_path

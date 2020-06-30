@@ -12,7 +12,7 @@ class ProductsTest < ApplicationSystemTestCase
     assert_equal 0, Product.count
     assert_selector 'div', text: 'Leider noch keine Einträge vorhanden'
 
-    (0...rand(5)).each do |x|
+    (1..rand(1..5)).each do |x|
       Product.create(name: "product name #{x}", description: "product description #{x}")
     end
     visit products_path
@@ -53,7 +53,7 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test 'visiting edit from index' do
-    (0...3).each do |x|
+    (1..rand(1..5)).each do |x|
       Product.create(name: "name for editing #{x}", description: "description for editing #{x}")
     end
     products = Product.all
