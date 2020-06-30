@@ -5,11 +5,11 @@ require 'application_system_test_case'
 class ProductsTest < ApplicationSystemTestCase
   test 'visiting index' do
     Product.destroy_all
+    assert_nil Product.first
     visit products_path
     assert_selector 'div', text: 'Produktliste'
     assert_selector 'table', count: 1
     assert_selector 'div', text: 'Neuen Eintrag hinzufügen'
-    assert_equal 0, Product.count
     assert_selector 'div', text: 'Leider noch keine Einträge vorhanden'
 
     (1..rand(1..5)).each do |x|
