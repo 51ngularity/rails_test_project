@@ -77,13 +77,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     end
     get products_path
     assert_select 'div', 'Produktliste'
-    assert_select 'table' do
-      assert_select 'thead' do
-        assert_select 'tr' do
+    assert_select 'table', count: 1 do
+      assert_select 'thead', count: 1 do
+        assert_select 'tr', count: 1 do
           assert_select 'th' do |ths|
-            # th0 = ths.first
-            # byebug
-            # assert_select ths[0], 'div', { count: 1, text: 'Aktionen' }
             assert_select ths[0], 'div', 'Aktionen', %q[in line 79 "assert_select ths[0], 'div', 'Aktionen'" failed]
             assert_select ths[1], 'div', 'Produktname', %q[in line 80 "assert_select ths[1], 'div', 'Produktname'" failed]
             assert_select ths[2], 'div', 'Beschreibung', %q[in line 81 "assert_select ths[2], 'div', 'Beschreibung'" failed]
@@ -93,8 +90,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         end
       end
 
-      assert_select 'tfoot' do
-        assert_select 'tr' do
+      assert_select 'tfoot', count: 1 do
+        assert_select 'tr', count: 1 do
           assert_select 'th' do |ths|
             assert_select ths[0], 'div', 'Aktionen', 'in line 91 > assert_select ths[0], div, Aktionen < failed'
             assert_select ths[1], 'div', 'Produktname', 'in line 92 > assert_select ths[1], div, Produktname < failed'
@@ -105,7 +102,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         end
       end
 
-      assert_select 'tbody' do
+      assert_select 'tbody', count: 1 do
         assert_select 'tr' do |trs|
           assert_select trs[0], 'td' do |tds|
             assert_select tds[0], 'div', 'NEU', %q[in line 103 "assert_select tds[0], 'div', 'NEU'" failed]
@@ -136,9 +133,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     Product.destroy_all
     assert Product.all.blank?
     get products_path
-    assert_select 'div', 'Produktliste'
-    assert_select 'table' do
-      assert_select 'tbody' do
+    assert_select 'div', 'Produktliste', count: 1
+    assert_select 'table', count: 1 do
+      assert_select 'tbody', count: 1 do
         assert_select 'tr' do |trs|
           assert_equal trs.size, 2
           assert_select trs[0], 'td' do |tds|
@@ -156,9 +153,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test 'testing new elements' do
     get new_product_path
-    assert_select 'div', 'Neuen Produkt-Eintrag generieren'
+    assert_select 'div', 'Neuen Produkt-Eintrag generieren', count: 1
 
-    assert_select 'form' do
+    assert_select 'form', count: 1 do
       assert_select 'label', 'Name', count: 1
       assert_select 'label', 'Beschreibung', count: 1
       assert_select 'input#product_name', count: 1 do |input|
@@ -170,13 +167,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    assert_select 'a', 'zurück zur Produktliste'
+    assert_select 'a', 'zurück zur Produktliste', count: 1
   end
 
   test 'testing edit elements' do
     p = Product.last
     get edit_product_path(p.id)
-    assert_select 'div', 'Produkt-Eintrag bearbeiten'
+    assert_select 'div', 'Produkt-Eintrag bearbeiten', count: 1
 
     assert_select 'form', count: 1 do
       assert_select 'label', 'Name', count: 1

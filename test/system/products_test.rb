@@ -31,22 +31,21 @@ class ProductsTest < ApplicationSystemTestCase
     assert_selector 'div', text: p.name
     assert_selector 'div', text: p.description
     assert_selector 'div', text: 'zurück zur Produktliste'
-    click_on 'zurück zur Produktliste'
+    click_on 'zurück zur Produktliste', count: 1
     assert_selector 'div', text: 'Produktliste'
   end
 
   test 'visiting new from index' do
     visit products_path
-    assert_no_selector 'div', text: 'new_name'
-    assert_no_selector 'div', text: 'new_description'
-    click_on 'NEU', match: :first
+    assert_no_selector 'div', text: 'new_name', count: 1
+    assert_no_selector 'div', text: 'new_description', count: 1
     assert_selector 'div', text: 'Neuen Produkt-Eintrag generieren'
     assert_selector 'div', text: 'Name'
     assert_selector 'div', text: 'Beschreibung'
     fill_in 'product_name', with: 'new_name'
     fill_in 'product_description', with: 'new_description'
-    click_on 'speichern'
-    click_on 'zurück zur Produktliste'
+    click_on 'speichern', count: 1
+    click_on 'zurück zur Produktliste', count: 1
     assert_selector 'div', text: 'Produktliste'
     assert_selector 'div', text: 'new_name'
     assert_selector 'div', text: 'new_description'
@@ -71,9 +70,9 @@ class ProductsTest < ApplicationSystemTestCase
     assert_selector 'textarea', text: p.description
     fill_in 'product_name', with: 'edited_name'
     fill_in 'product_description', with: 'edited_description'
-    click_on 'speichern'
+    click_on 'speichern', count: 1
     assert_selector 'div', text: 'Produktbeschreibung'
-    click_on 'zurück zur Produktliste'
+    click_on 'zurück zur Produktliste', count: 1
     assert_selector 'div', text: 'Produktliste'
     assert_selector 'div', text: 'edited_name'
     assert_selector 'div', text: 'edited_description'
