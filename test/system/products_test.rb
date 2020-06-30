@@ -16,15 +16,22 @@ class ProductsTest < ApplicationSystemTestCase
       Product.create(name: "product name #{x}", description: "product description #{x}")
     end
     visit products_path
-    assert_selector 'div', text: 'NEU'
-    assert_selector 'a', text: 'Bearbeiten'
-    assert_selector 'a', text: 'Löschen'
+    assert_selector 'div', text: 'Produktliste'
+    click_on %w[new_left new_right].sample
+    assert_selector 'div', text: 'Neuen Produkt-Eintrag generieren'
+    click_on 'zurück zur Produktliste', count: 1
+    find_all('a', text: 'Bearbeiten').sample.click
+    assert_selector 'div', text: 'Produkt-Eintrag bearbeiten'
+    click_on 'zurück zur Produktliste', count: 1
+    assert_difference 'Product.count', -1 do
+      find_all('a', text: 'Löschen').sample.click
+    end
   end
 
   test 'visiting show from index' do
     visit products_url
-    p = products(:valid_product)
-    click_link p.name, match: :first
+    p = Product.all.sample
+    click_link p.name, id: %w[product_name_left product_name_right].sample
     assert_selector 'div', text: 'Produktbeschreibung'
     assert_selector 'div', text: 'Name'
     assert_selector 'div', text: 'Beschreibung'
@@ -39,6 +46,7 @@ class ProductsTest < ApplicationSystemTestCase
     visit products_path
     assert_no_selector 'div', text: 'new_name', count: 1
     assert_no_selector 'div', text: 'new_description', count: 1
+    click_on  %w[new_left new_right].sample
     assert_selector 'div', text: 'Neuen Produkt-Eintrag generieren'
     assert_selector 'div', text: 'Name'
     assert_selector 'div', text: 'Beschreibung'
