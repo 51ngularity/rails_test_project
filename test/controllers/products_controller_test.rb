@@ -172,6 +172,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test 'testing edit elements' do
     p = Product.last
+    assert_not_nil p
     get edit_product_path(p.id)
     assert_select 'div', 'Produkt-Eintrag bearbeiten', count: 1
 
@@ -192,6 +193,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test 'testing show elements' do
     p = Product.last
+    assert_not_nil p
     get product_path(p.id)
     assert_select 'div', 'Produktbeschreibung', count: 1
     assert_select 'div', 'Name:', count: 1
