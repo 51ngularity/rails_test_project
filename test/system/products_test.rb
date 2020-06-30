@@ -7,7 +7,7 @@ class ProductsTest < ApplicationSystemTestCase
     Product.destroy_all
     visit products_path
     assert_selector 'div', text: 'Produktliste'
-    assert_selector 'table'
+    assert_selector 'table', count: 1
     assert_selector 'div', text: 'Neuen Eintrag hinzufügen'
     assert_equal 0, Product.count
     assert_selector 'div', text: 'Leider noch keine Einträge vorhanden'

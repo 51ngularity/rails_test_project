@@ -35,7 +35,7 @@ class ProductsTest < ApplicationSystemTestCase
     end
     visit products_path
 
-    assert_selector 'a', text: 'Bearbeiten', count: 6 do |inputs|
+    assert_selector 'a', text: 'Bearbeiten', count: (2 * Product.all.size) do |inputs|
       # byebug
       assert_equal Capybara::Node::Element, inputs.class # returns only one element
     end
