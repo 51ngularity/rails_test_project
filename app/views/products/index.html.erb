@@ -91,7 +91,7 @@
                     <a href="products/new" name='new_left' id='new_left'>
                       <div class="button is-success is-large">
                         <span class="icon">
-                          <i class="fas fa-plus"></i>
+                          <i class="fa fa-plus"></i>
                         </span>
                         <div class="content">NEU</div>
                       </div>
@@ -111,7 +111,7 @@
                     <a href="products/new" name='new_right' id='new_right'>
                       <div class="button is-success is-large">
                         <span class="icon">
-                          <i class="fas fa-plus"></i>
+                          <i class="fa fa-plus"></i>
                         </span>
                         <div class="content">NEU</div>
                       </div>
@@ -135,8 +135,19 @@
                   <tr>
                     <td>
                       <div class="content has-text-centered">
-                        <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2", name: 'edit_left', id: "#{p.id}_edit_left" %>
-                        <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5", name: 'delete_left', id: "#{p.id}_delete_left" %>
+                        <%= link_to edit_product_path(p.id), class: "button is-warning is-5 px-4 mb-2", name: 'edit_left', id: "#{p.id}_edit_left" do%>
+                          <span class="icon">
+                            <i class="fa fa-edit"></i>
+                          </span>
+                          <div class="content">Bearbeiten</div>
+                        <% end %>
+                        <br>
+                        <%= link_to product_path(p.id), method: :delete, class: "button is-danger is-5 px-4", name: 'delete_left', id: "#{p.id}_delete_left" do %>
+                          <span class="icon">
+                            <i class="fa fa-remove"></i>
+                          </span>
+                          <div class="content">Löschen</div>
+                        <% end %>
                       </div>
                     </td>
                     <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info", id: 'product_name_left' %> </u></td>
@@ -147,8 +158,19 @@
                     <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info", id: 'product_name_right' %> </u></td>
                     <td>
                       <div class="content has-text-centered">
-                        <%= link_to 'Bearbeiten', edit_product_path(p.id), class: "button is-warning is-5 px-2 mb-2", name: 'edit_right', id: "#{p.id}_edit_right" %>
-                        <%= link_to 'Löschen', product_path(p.id), method: :delete, class: "button is-danger is-5", name: 'delete_right', id: "#{p.id}_delete_right" %>
+                        <%= link_to edit_product_path(p.id), class: "button is-warning is-5 px-4 mb-2", name: 'edit_left', id: "#{p.id}_edit_left" do%>
+                          <span class="icon">
+                            <i class="fa fa-edit"></i>
+                          </span>
+                          <div class="content">Bearbeiten</div>
+                        <% end %>
+                        <br>
+                        <%= link_to product_path(p.id), method: :delete, class: "button is-danger is-5 px-4", name: 'delete_left', id: "#{p.id}_delete_left" do %>
+                          <span class="icon">
+                            <i class="fa fa-remove"></i>
+                          </span>
+                          <div class="content">Löschen</div>
+                        <% end %>
                       </div>
                     </td>
                   </tr>
