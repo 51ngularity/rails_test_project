@@ -36,6 +36,11 @@
 
   <section class="section">
     <div class="content">
+    <div class="section">
+      <% flash.each do |name, message| %>
+        <div class="content is-size-4"><%= message %></div>
+      <% end %>
+    </div>
       <%= yield %>
     </div>
   </section>

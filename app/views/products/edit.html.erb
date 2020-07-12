@@ -5,8 +5,18 @@
 
         <div class="title is-size-3 has-text-centered">Produkt-Eintrag bearbeiten</div>
 
-        <div class="box has-background-info-light my-6">
+        <% if @product.errors.any? %>
+          <div class="section box has-background-warning-light">
+            <div class="title has-text-danger"> Product-entry could not be created due to the following errors: </div>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                <li> <div class="content is-size-4"><%= message %></div> </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
+        <div class="box has-background-info-light my-6">
           <!-- was not able to add a class to form and had to use the box as a separate tag -->
           <%= form_with(model: @product, local: true) do |f| %>
             <div class="field">

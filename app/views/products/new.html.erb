@@ -4,6 +4,17 @@
       <div class="column is-6">
         
         <div class="title is-size-3 has-text-centered">Neuen Produkt-Eintrag generieren</div>
+        
+        <% if @product.errors.any? %>
+          <div class="section box has-background-warning-light">
+            <div class="title has-text-danger"> Product-entry could not be created due to the following errors: </div>
+            <ul>
+              <% @product.errors.full_messages.each do |message| %>
+                <li> <div class="content is-size-4"><%= message %></div> </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <%= form_with scope: :product, class: 'box has-background-info-light  my-6', url: products_path, local: true do |f| %>
             <div class="field">
