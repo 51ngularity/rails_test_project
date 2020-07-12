@@ -67,7 +67,7 @@ class ProductsTest < ApplicationSystemTestCase
     visit products_path
     assert_no_selector 'div', text: 'edited_name'
     assert_no_selector 'div', text: 'edited_description'
-    click_link 'Bearbeiten', id: "#{p.id}_edit_left"
+    click_link 'Bearbeiten', id: "edit_left_#{p.id}"
     assert_selector 'div', text: 'Produkt-Eintrag bearbeiten'
     assert_selector 'div', text: 'Name'
     assert_selector 'div', text: 'Beschreibung'

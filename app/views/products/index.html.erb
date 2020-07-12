@@ -132,17 +132,17 @@
                 </tr>
               <% else %>
                 <% @products.each do |p| %>
-                  <tr>
+                  <tr id="<%= "row_#{p.id}" %>">
                     <td>
                       <div class="content has-text-centered">
-                        <%= link_to edit_product_path(p.id), class: "button is-warning is-5 px-4 mb-2", name: 'edit_left', id: "#{p.id}_edit_left" do%>
+                        <%= link_to edit_product_path(p.id), class: "button is-warning is-5 px-4 mb-2", name: 'edit_left', id: "edit_left_#{p.id}" do %>
                           <span class="icon">
                             <i class="fa fa-edit"></i>
                           </span>
                           <div class="content">Bearbeiten</div>
                         <% end %>
                         <br>
-                        <%= link_to product_path(p.id), method: :delete, class: "button is-danger is-5 px-4", name: 'delete_left', id: "#{p.id}_delete_left" do %>
+                        <%= link_to product_path(p.id), method: :delete, class: "button is-danger is-5 px-4", name: 'delete_left', id: "delete_left_#{p.id}" do %>
                           <span class="icon">
                             <i class="fa fa-remove"></i>
                           </span>
@@ -158,14 +158,14 @@
                     <td><u> <%= link_to p.name, product_path(p.id), class: "content is-info", id: 'product_name_right' %> </u></td>
                     <td>
                       <div class="content has-text-centered">
-                        <%= link_to edit_product_path(p.id), class: "button is-warning is-5 px-4 mb-2", name: 'edit_left', id: "#{p.id}_edit_left" do%>
+                        <%= link_to edit_product_path(p.id), class: "button is-warning is-5 px-4 mb-2", name: 'edit_right', id: "edit_right_#{p.id}" do%>
                           <span class="icon">
                             <i class="fa fa-edit"></i>
                           </span>
                           <div class="content">Bearbeiten</div>
                         <% end %>
                         <br>
-                        <%= link_to product_path(p.id), method: :delete, class: "button is-danger is-5 px-4", name: 'delete_left', id: "#{p.id}_delete_left" do %>
+                        <%= link_to product_path(p.id), method: :delete, class: "button is-danger is-5 px-4", name: 'delete_right', id: "delete_right_#{p.id}" do %>
                           <span class="icon">
                             <i class="fa fa-remove"></i>
                           </span>
