@@ -71,8 +71,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   # testing views
 
   test 'testing index elements' do
-    (1..rand(1..5)).each do |x|
-      Product.create(name: "product name #{x}", description: "product description #{x}")
+    5.times do
+      create(:random_product)
     end
     get products_path
     assert_select 'div', 'Produktliste'

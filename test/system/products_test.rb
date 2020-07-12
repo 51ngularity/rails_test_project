@@ -12,8 +12,8 @@ class ProductsTest < ApplicationSystemTestCase
     assert_selector 'div', text: 'Neuen Eintrag hinzufügen'
     assert_selector 'div', text: 'Leider noch keine Einträge vorhanden'
 
-    (1..rand(1..5)).each do |x|
-      Product.create(name: "product name #{x}", description: "product description #{x}")
+    5.times do
+      create(:random_product)
     end
     visit products_path
     assert_selector 'div', text: 'Produktliste'
@@ -60,8 +60,8 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test 'visiting edit from index' do
-    (1..rand(1..5)).each do |x|
-      Product.create(name: "name for editing #{x}", description: "description for editing #{x}")
+    5.times do
+      create(:random_product)
     end
     p = Product.all[rand(Product.count)]
     visit products_path
