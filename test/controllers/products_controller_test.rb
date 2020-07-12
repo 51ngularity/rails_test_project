@@ -22,9 +22,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create new product' do
-    p = products(:valid_product)
     assert_difference('Product.count', +1) do
-      post products_path, params: { product: { name: p.name, description: p.description } }
+      post products_path, params: { product: { name: 'new name', description: 'new description' } }
     end
     assert_redirected_to product_path(Product.last.id)
   end
