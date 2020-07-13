@@ -43,6 +43,7 @@ RSpec.describe 'Products', type: :system do
 
       context 'with no product db entries' do
         before(:context) do
+          Product.destroy_all
           assert_equal 0, Product.count
         end
 
